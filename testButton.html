@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<button id="testButton" onclick="alert(2);">Click me</button>
+
+<script>
+	function runThis() {
+		alert(0);
+		a = document.getElementById("testButton");		
+		a.addEventListener("click",function() { 
+		//alert($(this).id); } ); //Uncaught ReferenceError: $ is not defined
+		alert(this.id); } ); //testButton
+		//alert($(event.target).id); } );
+	}
+		runThis();
+</script>

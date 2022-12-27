@@ -1,0 +1,35 @@
+<button type='button' id='button_1' onClick='uploadFile_putLink(1)'>
+	<img src='./imageForIcon-link.png' width='10' height='10'>Upload file, put link
+</button>
+
+<!-- hidden upload buttons here -->
+<input type='file' style='display:none;' id='uploadFilePutLink_1'  name='fileElem'>
+		
+<script>
+		
+     function uploadFile_putLink(getPieceNumber) {
+        alert ("upload file put link");
+        //open file selection window (f)
+		document.getElementById("uploadFilePutLink_1").click();
+	}
+		
+	function nowDo() {
+		console.log("nowDo();");
+		theFile = document.getElementById("uploadFilePutLink_1").files[0];
+		xhr = new XMLHttpRequest();
+		xhr.onreadystatechange = function() {
+			if (xhr.readyState == XMLHttpRequest.DONE) {
+				console.log(xhr.responseText);
+			}
+		}
+		let formData = new FormData();
+		//form.append("getHTML", requestHTML);
+		form.append("getHTML", "yes");
+		formData.append("location","./");
+		formData.append("fileToUpload",theFile);
+		xhr.open("POST", './Serverside_ImageUploadHandle.php');
+		xhr.send(formData);
+     }
+</script>
+
+<button type="submit" onClick="nowDo();" >Now do</submit>
